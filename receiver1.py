@@ -4,7 +4,7 @@ import fcntl
 import time
 import sys
 
-timeInterval = 0.1
+timeInterval = 0.2
 l = []
 
 def printerr(s):
@@ -23,8 +23,9 @@ while True:
     except IOError:
         pass
 
+time.sleep(timeInterval)
+
 unlockFile()
-#time.sleep(timeInterval)
 time.sleep(timeInterval / 2)
 
 def receive():
