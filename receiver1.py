@@ -4,7 +4,7 @@ import fcntl
 import time
 import sys
 
-timeInterval = 0.2
+timeInterval = 0.1
 l = []
 
 def printerr(s):
@@ -35,7 +35,7 @@ def receive():
     except IOError:
         b = 1
     unlockFile()
-    printerr("receiving " +  `b`)
+    #printerr("receiving " +  `b`)
     l.append(b)
 
 for i in range (0, 56):
@@ -86,6 +86,6 @@ def bitArray2String(arrBits):
 
     #4. Concatenaate
     print(''.join(arrChar));
-    print >> sys.stderr, "Receiving", ''.join(arrChar)
+    #print >> sys.stderr, "Receiving", ''.join(arrChar)
 
 bitArray2String(l)
