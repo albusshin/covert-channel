@@ -35,7 +35,7 @@ print >> sys.stderr,  time.time() - baselineStartingTime
 
 baseline /= counter
 print >> sys.stderr,  'counter: ', counter
-threshold = baseline * 1.8
+threshold = baseline * 1.5
 print >> sys.stderr,  'receiver baseline: ', baseline
 print >> sys.stderr,  'threshold', threshold
 
@@ -43,10 +43,12 @@ time.sleep(0.22)
 print >> sys.stderr,  'start receiving'
 
 def otherRunning():
-    start = time.time()
-    operation()
-    interval = time.time() - start
-    if interval > threshold:
+    aggregated = 0
+    for i in range(0, 10):
+        start = time.time()
+        operation()
+        aggregated +=  time.time() - start
+    if aggregated / 10 > threshold:
         return True
     else:
         return False
