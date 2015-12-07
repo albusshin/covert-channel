@@ -4,20 +4,17 @@ import fcntl
 import time
 import sys
 
-timeInterval = 0.6
+timeInterval = 0.2
 
 def printerr(s):
     print >> sys.stderr, s
-    pass
 def lockFile():
     fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)  #Try to acquire file lock
-    printerr('acquired lock')
 def unlockFile():
     fcntl.flock(fd, fcntl.LOCK_UN)  #Unlock file
-    printerr('unlocked')
 
 secret = sys.argv[1]
-printerr(secret)
+print >> sys.stderr, "Sending:", secret
 
 f = open("shared_file", "r")
 fd = f.fileno()
@@ -27,8 +24,6 @@ while True:
     except IOError:
         break
     unlockFile()
-
-#time.sleep(timeInterval)
 
 def transmit(b):
     printerr('transmitting ' + `b`)
@@ -45,6 +40,3 @@ for c in secret:
         transmit(bit)
         now = time.time()
         time.sleep(timeInterval - (now - started))
-
-unlockFile()
-

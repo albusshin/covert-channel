@@ -4,18 +4,15 @@ import fcntl
 import time
 import sys
 
-timeInterval = 0.6
+timeInterval = 0.2
 l = []
 
 def printerr(s):
     print >> sys.stderr, s
-    pass
 def lockFile():
     fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)  #Try to acquire file lock
-    printerr('acquired lock')
 def unlockFile():
     fcntl.flock(fd, fcntl.LOCK_UN)  #Unlock file
-    printerr('unlocked')
 
 f = open("shared_file", "r")
 fd = f.fileno()
@@ -89,7 +86,6 @@ def bitArray2String(arrBits):
 
     #4. Concatenaate
     print(''.join(arrChar));
-    printerr(''.join(arrChar));
+    print >> sys.stderr, "Receiving", ''.join(arrChar)
 
 bitArray2String(l)
-unlockFile()
