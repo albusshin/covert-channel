@@ -1,7 +1,9 @@
+#!/usr/bin/python
+
 import fcntl
 import time
 
-timeInterval = 0.2
+timeInterval = 0.5
 l = []
 
 def lockFile():

@@ -1,8 +1,10 @@
+#!/usr/bin/python
+
 import fcntl
 import time
 import sys
 
-timeInterval = 0.2
+timeInterval = 0.5
 
 def lockFile():
     fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)  #Try to acquire file lock
