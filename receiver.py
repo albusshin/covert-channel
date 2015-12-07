@@ -39,3 +39,48 @@ for i in range (0, 56):
     time.sleep(timeInterval)
 
 print l
+
+def bitArray2String(arrBits):
+    strResult = [];
+    # To DO:
+    # 1. Insert a leading zero
+    # 2.  convert every 8 bits into an integer
+    # 3. Obttain characters from the integers
+    # 4. Concatenate the characters into a string
+
+    # Inserting leading Zeros
+    for i in range(0,8):
+        if(i==0):
+        
+            arrBits.insert(i,0)
+    
+        
+        else:
+            arrBits.insert((i*7)+i,0)
+    
+    #print(arrBits); 
+    
+    #2 convert every 8 bits into integer
+    arrIntegers = [];
+    result = 0;
+    for i in range(0,8):
+        char = arrBits[i*8:(i+1)*8];#char has the 8 bits required
+        shiftIndex = 7;
+        for j in char:
+            result = result | j<<shiftIndex;
+            shiftIndex = shiftIndex-1;
+        arrIntegers.append(result);
+        result = 0;
+
+    #print(arrIntegers);
+
+    #3. Obtain characters from the string
+    arrChar = [];
+    
+    for i in arrIntegers:
+        arrChar.append(chr(i));
+
+    #4. Concatenaate
+    print(''.join(arrChar));
+
+
