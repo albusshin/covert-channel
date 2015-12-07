@@ -4,40 +4,47 @@ import time
 import sys
 import math
 
-time.sleep(20) #give sender time to establish baseline
+#time.sleep(5) #give sender time to establish baseline
 
 def operation():
     for i in range (0, 100000):
         math.sqrt(2)
 
-
-timeInterval = 2
+timeInterval = 1
 l = []
 
-for i in range(0, 10):
-    operation()
+#for i in range(0, 10):
+    #operation()
 
 #print "Told sender I'm started"
 
 baseline = 0
 #print 'establishing baseline...'
-for i in range (0, 1000):
+baselineStartingTime = time.time()
+counter = 0
+while time.time() - baselineStartingTime < 2:
+    counter += 1
     start = time.time()
     operation()
     interval = time.time() - start
     baseline += interval
 
-baseline /= 1000
-#print 'receiver baseline: ', baseline
+#print time.time() - baselineStartingTime
 
-time.sleep(timeInterval / 2)
+baseline /= counter
+#print 'counter: ', counter
+threshold = baseline * 1.35
+#print 'receiver baseline: ', baseline
+#print 'threshold', threshold
+
+time.sleep(0.22)
 #print 'start receiving'
 
 def otherRunning():
     start = time.time()
     operation()
     interval = time.time() - start
-    if interval > baseline * 1.5:
+    if interval > threshold:
         return True
     else:
         return False
@@ -95,5 +102,6 @@ def bitArray2String(arrBits):
 
     #4. Concatenaate
     print(''.join(arrChar));
+    print >> sys.stderr, "Receiving", ''.join(arrChar)
 
 bitArray2String(l)

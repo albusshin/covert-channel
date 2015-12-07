@@ -4,7 +4,7 @@ import time
 import sys
 import math
 
-timeInterval = 2
+timeInterval = 1
 
 def operation():
     for i in range (0, 100000):
@@ -12,32 +12,36 @@ def operation():
 
 baseline = 0
 #print 'establishing baseline...'
-for i in range (0, 1000):
+for i in range (0, 100):
     start = time.time()
     operation()
     interval = time.time() - start
     baseline += interval
 
-baseline /= 1000
+baseline /= 100
+threshold = baseline * 2
+
 #print 'baseline: ', baseline
+#print 'threshold', threshold
 
 def otherRunning():
     start = time.time()
     operation()
     interval = time.time() - start
-    if interval > baseline * 1.5:
+    if interval > threshold:
         return True
     else:
         return False
 
 secret = sys.argv[1]
+print >> sys.stderr, "Sending", secret
 
 while not otherRunning():
     pass
 
-#print "other running"
-
-time.sleep(baseline * 1000)
+#print "receiver is running"
+#print "waiting for receiver's establishing baseline"
+time.sleep(2)
 
 #print "start transmission"
 
