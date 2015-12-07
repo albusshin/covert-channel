@@ -11,7 +11,7 @@ def unlockFile():
 
 secret = sys.argv[1]
 
-f = open("sharedfile", "r")
+f = open("shared_file", "r")
 fd = f.fileno()
 while True:
     try:

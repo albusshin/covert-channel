@@ -9,7 +9,7 @@ def lockFile():
 def unlockFile():
     fcntl.flock(fd, fcntl.LOCK_UN)  #Unlock file
 
-f = open("sharedfile", "r")
+f = open("shared_file", "r")
 fd = f.fileno()
 while True:
     try:
