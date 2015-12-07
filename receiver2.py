@@ -5,9 +5,7 @@ import sys
 import math
 print >> sys.stderr,  'Receiver started at ', time.time()
 
-timeInterval = 1
-
-#time.sleep(5) #give sender time to establish baseline
+timeInterval = 2
 
 def operation():
     for i in range (0, 100000):
@@ -15,18 +13,18 @@ def operation():
 
 l = []
 
-#for i in range(0, 10):
-    #operation()
-#print >> sys.stderr,  "Told sender I'm started"
+baselineStartingTime = time.time()
+while time.time() - baselineStartingTime < 10:
+    operation()
+
+print >> sys.stderr,  "Told sender I'm started"
 
 baseline = 0
 print >> sys.stderr,  'establishing receiver baseline...'
 baselineStartingTime = time.time()
 counter = 0
-while time.time() - baselineStartingTime < 2:
+while time.time() - baselineStartingTime < 5:
     counter += 1
-    if counter < 30:
-        continue
     start = time.time()
     operation()
     interval = time.time() - start
@@ -40,7 +38,7 @@ threshold = baseline * 1.7
 print >> sys.stderr,  'receiver baseline: ', baseline
 print >> sys.stderr,  'threshold', threshold
 
-time.sleep(0.22)
+time.sleep(timeInterval / 2)
 print >> sys.stderr,  'start receiving'
 
 def otherRunning():
