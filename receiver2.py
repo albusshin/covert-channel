@@ -16,29 +16,31 @@ l = []
 #for i in range(0, 10):
     #operation()
 
-#print "Told sender I'm started"
+print >> sys.stderr,  "Told sender I'm started"
 
 baseline = 0
-#print 'establishing baseline...'
+print >> sys.stderr,  'establishing baseline...'
 baselineStartingTime = time.time()
 counter = 0
 while time.time() - baselineStartingTime < 2:
     counter += 1
+    if counter < 30:
+        continue
     start = time.time()
     operation()
     interval = time.time() - start
     baseline += interval
 
-#print time.time() - baselineStartingTime
+print >> sys.stderr,  time.time() - baselineStartingTime
 
 baseline /= counter
-#print 'counter: ', counter
+print >> sys.stderr,  'counter: ', counter
 threshold = baseline * 1.35
-#print 'receiver baseline: ', baseline
-#print 'threshold', threshold
+print >> sys.stderr,  'receiver baseline: ', baseline
+print >> sys.stderr,  'threshold', threshold
 
 time.sleep(0.22)
-#print 'start receiving'
+print >> sys.stderr,  'start receiving'
 
 def otherRunning():
     start = time.time()
@@ -52,10 +54,10 @@ def otherRunning():
 def receive():
     b = 0
     if otherRunning():
-        #print 'receiving 1'
+        print >> sys.stderr,  'receiving 1'
         b = 1
     else:
-        #print 'receiving 0'
+        print >> sys.stderr,  'receiving 0'
         b = 0
     l.append(b)
 
@@ -101,7 +103,7 @@ def bitArray2String(arrBits):
         arrChar.append(chr(i));
 
     #4. Concatenaate
-    print(''.join(arrChar));
+    print ''.join(arrChar);
     print >> sys.stderr, "Receiving", ''.join(arrChar)
 
 bitArray2String(l)
