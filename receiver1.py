@@ -11,7 +11,6 @@ def unlockFile():
 
 f = open("sharedfile", "r")
 fd = f.fileno()
-print fd
 while True:
     try:
         lockFile()
@@ -31,14 +30,11 @@ def receive():
     except IOError:
         b = 1
     unlockFile()
-    print "Receiving", b
     l.append(b)
 
 for i in range (0, 56):
     receive()
     time.sleep(timeInterval)
-
-print l
 
 def bitArray2String(arrBits):
     strResult = [];
@@ -83,4 +79,4 @@ def bitArray2String(arrBits):
     #4. Concatenaate
     print(''.join(arrChar));
 
-
+bitArray2String(l)
