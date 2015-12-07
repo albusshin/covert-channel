@@ -34,11 +34,11 @@ print >> sys.stderr,  time.time() - baselineStartingTime
 
 baseline /= counter
 print >> sys.stderr,  'counter: ', counter
-threshold = baseline * 1.7
+threshold = baseline * 1.34
 print >> sys.stderr,  'receiver baseline: ', baseline
 print >> sys.stderr,  'threshold', threshold
 
-time.sleep(timeInterval / 2)
+time.sleep(1.4)
 print >> sys.stderr,  'start receiving'
 
 def otherRunning():
