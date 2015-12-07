@@ -11,7 +11,7 @@ def operation():
         math.sqrt(2)
 
 baseline = 0
-print 'establishing baseline...'
+#print 'establishing baseline...'
 for i in range (0, 1000):
     start = time.time()
     operation()
@@ -19,7 +19,7 @@ for i in range (0, 1000):
     baseline += interval
 
 baseline /= 1000
-print 'baseline: ', baseline
+#print 'baseline: ', baseline
 
 def otherRunning():
     start = time.time()
@@ -35,20 +35,20 @@ secret = sys.argv[1]
 while not otherRunning():
     pass
 
-print "other running"
+#print "other running"
 
 time.sleep(baseline * 1000)
 
-print "start transmission"
+#print "start transmission"
 
 def transmit(b):
     start = time.time()
     if b != 0:
-        print 'transmitting 1'
+        #print 'transmitting 1'
         while time.time() - start < timeInterval:
             operation()
     else:
-        print 'transmitting 0'
+        #print 'transmitting 0'
         time.sleep(timeInterval - (time.time() - start))
 
 for c in secret:

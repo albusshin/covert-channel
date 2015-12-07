@@ -4,7 +4,7 @@ import time
 import sys
 import math
 
-time.sleep(12) #give sender time to establish baseline
+time.sleep(20) #give sender time to establish baseline
 
 def operation():
     for i in range (0, 100000):
@@ -17,10 +17,10 @@ l = []
 for i in range(0, 10):
     operation()
 
-print "Told sender I'm started"
+#print "Told sender I'm started"
 
 baseline = 0
-print 'establishing baseline...'
+#print 'establishing baseline...'
 for i in range (0, 1000):
     start = time.time()
     operation()
@@ -28,10 +28,10 @@ for i in range (0, 1000):
     baseline += interval
 
 baseline /= 1000
-print 'receiver baseline: ', baseline
+#print 'receiver baseline: ', baseline
 
 time.sleep(timeInterval / 2)
-print 'start receiving'
+#print 'start receiving'
 
 def otherRunning():
     start = time.time()
@@ -45,10 +45,10 @@ def otherRunning():
 def receive():
     b = 0
     if otherRunning():
-        print 'receiving 1'
+        #print 'receiving 1'
         b = 1
     else:
-        print 'receiving 0'
+        #print 'receiving 0'
         b = 0
     l.append(b)
 
