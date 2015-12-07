@@ -3,6 +3,7 @@
 import time
 import sys
 import math
+print >> sys.stderr,  'Sender started at ', time.time()
 
 timeInterval = 1
 
@@ -11,7 +12,7 @@ def operation():
         math.sqrt(2)
 
 baseline = 0
-print >> sys.stderr,  'establishing baseline...'
+print >> sys.stderr,  'establishing sender baseline...'
 for i in range (0, 100):
     start = time.time()
     operation()

@@ -3,6 +3,9 @@
 import time
 import sys
 import math
+print >> sys.stderr,  'Receiver started at ', time.time()
+
+timeInterval = 1
 
 #time.sleep(5) #give sender time to establish baseline
 
@@ -10,16 +13,14 @@ def operation():
     for i in range (0, 100000):
         math.sqrt(2)
 
-timeInterval = 1
 l = []
 
 #for i in range(0, 10):
     #operation()
-
-print >> sys.stderr,  "Told sender I'm started"
+#print >> sys.stderr,  "Told sender I'm started"
 
 baseline = 0
-print >> sys.stderr,  'establishing baseline...'
+print >> sys.stderr,  'establishing receiver baseline...'
 baselineStartingTime = time.time()
 counter = 0
 while time.time() - baselineStartingTime < 2:
@@ -35,7 +36,7 @@ print >> sys.stderr,  time.time() - baselineStartingTime
 
 baseline /= counter
 print >> sys.stderr,  'counter: ', counter
-threshold = baseline * 1.5
+threshold = baseline * 1.7
 print >> sys.stderr,  'receiver baseline: ', baseline
 print >> sys.stderr,  'threshold', threshold
 
