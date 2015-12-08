@@ -42,7 +42,7 @@ print >> sys.stderr,  "Sending", secret
 while not otherRunning():
     pass
 print >> sys.stderr,  "receiver is running"
-time.sleep(9.6)
+time.sleep(9.5)
 print >> sys.stderr,  "receiver starting signal done"
 
 print >> sys.stderr,  "waiting for receiver's establishing baseline"
