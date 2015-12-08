@@ -34,8 +34,8 @@ print >> sys.stderr,  time.time() - baselineStartingTime
 
 baseline /= counter
 print >> sys.stderr,  'counter: ', counter
-threshold = 0.024
-threshold = baseline * 1.4
+threshold = 0.038
+#threshold = baseline * 1.4
 print >> sys.stderr,  'receiver baseline: ', baseline
 print >> sys.stderr,  'threshold', threshold
 
