@@ -3,7 +3,6 @@
 import time
 import sys
 import math
-print >> sys.stderr,  'Receiver started at ', time.time()
 
 timeInterval = 2
 
@@ -17,10 +16,8 @@ baselineStartingTime = time.time()
 while time.time() - baselineStartingTime < 10:
     operation()
 
-print >> sys.stderr,  "Told sender I'm started"
 
 baseline = 0
-print >> sys.stderr,  'establishing receiver baseline...'
 baselineStartingTime = time.time()
 counter = 0
 while time.time() - baselineStartingTime < 5:
@@ -30,17 +27,11 @@ while time.time() - baselineStartingTime < 5:
     interval = time.time() - start
     baseline += interval
 
-print >> sys.stderr,  time.time() - baselineStartingTime
 
 baseline /= counter
-print >> sys.stderr,  'counter: ', counter
-threshold = 0.038
-#threshold = baseline * 1.4
-print >> sys.stderr,  'receiver baseline: ', baseline
-print >> sys.stderr,  'threshold', threshold
+threshold = baseline * 1.7
 
 time.sleep(1.4)
-print >> sys.stderr,  'start receiving'
 
 def otherRunning():
     aggregated = 0
@@ -56,10 +47,8 @@ def otherRunning():
 def receive():
     b = 0
     if otherRunning():
-        print >> sys.stderr,  'receiving 1'
         b = 1
     else:
-        print >> sys.stderr,  'receiving 0'
         b = 0
     l.append(b)
 
@@ -106,6 +95,5 @@ def bitArray2String(arrBits):
 
     #4. Concatenaate
     print ''.join(arrChar);
-    print >> sys.stderr, "Receiving", ''.join(arrChar)
 
 bitArray2String(l)

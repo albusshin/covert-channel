@@ -4,7 +4,7 @@ import fcntl
 import time
 import sys
 
-timeInterval = 0.2
+timeInterval = 0.3
 l = []
 
 def printerr(s):
