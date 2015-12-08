@@ -1,5 +1,5 @@
 Problem 1:
-************
+==========
 
 We implemented this covert channel communication by taking advantage of the shared file that we were provided with. The file lock status is checked to see if the bit transmitted is 0 or 1.
 
@@ -14,7 +14,7 @@ Step 7: Concurrently, the receiver checks if the file is locked. If the file is 
 Step 9: The transmission is finished.
 
 Problem 2:
-************
+==========
 
 This covert channel attack is implemented using similar method to what we used in problem 1, only we transmit the "Receiver started" message and the secret string using the CPU intensive operation finishing time instead of a file locking status.
 
