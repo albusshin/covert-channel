@@ -46,7 +46,7 @@ time.sleep(9.6)
 print >> sys.stderr,  "receiver starting signal done"
 
 print >> sys.stderr,  "waiting for receiver's establishing baseline"
-time.sleep(5.1)
+time.sleep(5.0)
 
 print >> sys.stderr,  "start transmission"
 
